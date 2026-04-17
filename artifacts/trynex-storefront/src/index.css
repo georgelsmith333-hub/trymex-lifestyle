@@ -497,3 +497,173 @@
     animation: none !important;
   }
 }
+
+  /* ═══════════════════════════════════════════════════
+     MOBILE-FIRST ENHANCEMENTS — TryNex BD 2026 Update
+     ═══════════════════════════════════════════════════ */
+
+  /* Safe area insets (notched phones, iPhone 14 Pro etc.) */
+  @supports (padding: max(0px)) {
+    .pb-safe { padding-bottom: max(0.75rem, env(safe-area-inset-bottom)); }
+    .pt-safe { padding-top: max(0px, env(safe-area-inset-top)); }
+    .mb-safe { margin-bottom: max(0px, env(safe-area-inset-bottom)); }
+    .mobile-sticky-bar {
+      padding-bottom: max(0.75rem, env(safe-area-inset-bottom)) !important;
+    }
+  }
+
+  /* Touch-friendly minimum target sizes (WCAG 2.5.5) */
+  .touch-target {
+    min-height: 44px;
+    min-width: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+  }
+
+  /* Sticky mobile bottom CTA bar */
+  .mobile-sticky-bar {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 40;
+    padding: 0.75rem 1rem;
+    background: rgba(255,255,255,0.96);
+    border-top: 1px solid hsl(var(--border));
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    box-shadow: 0 -4px 24px rgba(0,0,0,0.08);
+  }
+
+  /* Horizontal scroll snap for mobile carousels */
+  .scroll-snap-x {
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+  }
+  .scroll-snap-x::-webkit-scrollbar { display: none; }
+  .scroll-snap-item { scroll-snap-align: start; }
+
+  /* Prevent iOS zoom on form inputs */
+  @media (max-width: 640px) {
+    input[type="text"],
+    input[type="email"],
+    input[type="tel"],
+    input[type="number"],
+    input[type="password"],
+    select,
+    textarea {
+      font-size: 16px !important;
+    }
+
+    .section-heading {
+      font-size: clamp(1.75rem, 8vw, 2.5rem);
+    }
+
+    html {
+      -webkit-text-size-adjust: 100%;
+    }
+
+    .overflow-y-auto,
+    .overflow-y-scroll {
+      -webkit-overflow-scrolling: touch;
+    }
+  }
+
+  /* Conversion: free shipping progress bar */
+  .shipping-progress-track {
+    height: 6px;
+    background: rgba(232,93,4,0.1);
+    border-radius: 999px;
+    overflow: hidden;
+  }
+  .shipping-progress-fill {
+    height: 100%;
+    background: linear-gradient(90deg, #E85D04, #FB8500);
+    border-radius: 999px;
+    transition: width 0.7s cubic-bezier(0.22,1,0.36,1);
+  }
+
+  /* Conversion: urgency pulse */
+  @keyframes urgency-pulse {
+    0%, 100% { background-color: rgba(239,68,68,0.06); }
+    50% { background-color: rgba(239,68,68,0.14); }
+  }
+  .urgency-pulse { animation: urgency-pulse 1.8s ease-in-out infinite; }
+
+  /* WhatsApp order button */
+  .whatsapp-order-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    padding: 0.45rem 0.9rem;
+    background: #25D366;
+    color: white !important;
+    font-weight: 700;
+    font-size: 0.7rem;
+    border-radius: 999px;
+    border: none;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    text-decoration: none !important;
+    box-shadow: 0 2px 8px rgba(37,211,102,0.28);
+    white-space: nowrap;
+  }
+  .whatsapp-order-btn:hover, .whatsapp-order-btn:active {
+    transform: scale(1.04);
+    box-shadow: 0 4px 16px rgba(37,211,102,0.38);
+    color: white !important;
+  }
+
+  /* Mobile two-column product grid */
+  @media (max-width: 480px) {
+    .product-grid-mobile {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 0.625rem;
+    }
+  }
+
+  /* Savings badge */
+  .savings-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.25rem;
+    padding: 0.2rem 0.6rem;
+    background: rgba(22,163,74,0.08);
+    color: #15803d;
+    font-size: 0.65rem;
+    font-weight: 800;
+    border-radius: 999px;
+    border: 1px solid rgba(22,163,74,0.2);
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+  }
+
+  /* Animated dot for live/urgency indicators */
+  @keyframes live-dot {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.4; transform: scale(1.4); }
+  }
+  .live-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    animation: live-dot 1.4s ease-in-out infinite;
+  }
+
+  /* Better modal/drawer on mobile - ensure full height on iOS */
+  .drawer-mobile {
+    height: 100%;
+    height: -webkit-fill-available;
+    max-height: 100dvh;
+  }
+
+  /* Smooth reveal animation for cart items */
+  @keyframes slide-in-right {
+    from { opacity: 0; transform: translateX(16px); }
+    to { opacity: 1; transform: translateX(0); }
+  }
+  .animate-slide-in { animation: slide-in-right 0.25s ease-out; }
+  
