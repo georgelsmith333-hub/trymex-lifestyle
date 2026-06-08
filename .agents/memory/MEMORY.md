@@ -1,0 +1,10 @@
+- [Trynex export fix](trynex-export-fix.md) — lib/api-client-react/src/index.ts must not double-export; generated/api is primary, trynex-hooks exports only unique items.
+- [Trynex admin password](trynex-admin.md) — Default admin pass is Administration@Trynexshop; DB table is `admins` (not `admin`); SHA-256 hash with salt trynex_salt_2024.
+- [Trynex products category bug](trynex-category.md) — useListProducts takes `categoryId?: number` NOT `category?: string`; Products.tsx was broken until fixed.
+- [Trynex GetAdminStats200 type](trynex-stats-type.md) — Generated type was missing weeklyData/paymentDistribution/topProducts; must add manually since orval codegen won't regenerate.
+- [TryNex Mobile port & CORS setup](trynex-mobile-port-setup.md) — Expo owns port 8080; API server must use port 5001 (hardcoded in npm script). Expo CORS needs regex pattern for *.expo.*.replit.dev in dev mode.
+- [TryNex WhatsApp & contact](trynex-contact.md) — Real WhatsApp number is 8801903426915; website is https://trynex.shop; both used in mobile cart/account quick links.
+- [TryNex Promo video scenes](trynex-promo-scenes.md) — Promo was all placeholder; now has 6 real scenes: BrandIntroScene, ProductShowcaseScene, ProductHeroScene×2, DesignStudioScene, CTAScene. Brand color #E85D04, navy bg #0A1628. Product images in public/images/.
+- [TryNex storefront improvements](trynex-storefront-improvements.md) — Session 2 comprehensive improvements: popup throttles, admin table min-w, Design Studio onboarding, admin auto-save patterns.
+- [TryNex Render→Replit migration](trynex-render-migration.md) — API fully migrated off Render to Replit autoscale. No more Render dependencies. Key changes and architecture documented.
+- [TryNex TypeScript fixes](trynex-ts-fixes.md) — Waterbottle paths corrected; R3F types via r3f.d.ts; generated API types patched manually; api.schemas.ts HealthStatus conflict resolved.
